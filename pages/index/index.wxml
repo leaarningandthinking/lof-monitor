@@ -1,0 +1,37 @@
+<view class="container">
+  <view class="tabs">
+    <view class="tab-item {{currentTab === 'lof' ? 'active' : ''}}" bindtap="switchTab" data-type="lof">LOF 套利</view>
+    <view class="tab-item {{currentTab === 'qdii' ? 'active' : ''}}" bindtap="switchTab" data-type="qdii">QDII 套利</view>
+  </view>
+
+  <view class="table-row list-head">
+    <view class="col-name">名称/代码</view>
+    <view class="col-price">现价/估值</view>
+    <view class="col-rate" bindtap="toggleSort" style="color:#1890ff">
+      溢价率 {{sortType===1?'▼':(sortType===2?'▲':'⇅')}}
+    </view>
+  </view>
+
+  <scroll-view scroll-y class="list-box" refresher-enabled bindrefresherrefresh="onPullDownRefresh" refresher-triggered="{{isRefreshing}}">
+    <block wx:for="{{list}}" wx:key="code">
+      <view class="table-row list-item">
+        <view class="col-name">
+          <text class="f-name">{{item.name}}</text>
+          <text class="f-code">{{item.code}}</text>
+        </view>
+        <view class="col-price">
+          <text class="p-main">{{item.price}}</text>
+          <text class="p-sub">{{item.nav_estimate}}</text>
+        </view>
+        <view class="col-rate">
+          <text class="r-val {{item.premium_rate_pct > 0 ? 'red' : 'green'}}">{{item.premium_rate_pct}}%</text>
+        </view>
+      </view>
+    </block>
+
+    <view wx:if="{{list.length === 0}}" class="empty">
+      <view>当前页签 ({{currentTab}}) 无数据</view>
+      <view style="font-size:12px; margin-top:10px;">请确保 Mac 脚本已发送该类别数据</view>
+    </view>
+  </scroll-view>
+</view>

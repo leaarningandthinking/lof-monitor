@@ -1,0 +1,41 @@
+page { background: #f6f7f9; }
+.container {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  display: block; /* 建议改为 block，方便 Tab 吸顶 */
+}
+
+/* 导航栏：大间距 */
+.tabs { display: flex; justify-content: center; gap: 80px; background: #fff; height: 48px; border-bottom: 1px solid #eee; }
+.tab-item { line-height: 48px; font-size: 15px; color: #999; position: relative; }
+.tab-item.active { color: #1890ff; font-weight: bold; }
+.tab-item.active::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 24px; height: 3px; background: #1890ff; border-radius: 2px; }
+
+/* 栅格对齐系统 */
+.table-row { display: flex; padding: 0 16px; align-items: center; box-sizing: border-box; width: 100%; }
+.col-name { flex: 45; text-align: left; }
+.col-price { flex: 25; text-align: right; }
+.col-rate { flex: 30; text-align: right; }
+
+/* 表头 */
+.list-head { height: 36px; background: #f0f2f5; font-size: 12px; color: #888; }
+.sort-active { color: #1890ff; font-weight: bold; }
+.sort-icon { margin-left: 4px; font-size: 12px; }
+
+/* 列表内容 */
+.list-container { height: calc(100vh - 84px); }
+.list-item { height: 70px; background: #fff; border-bottom: 1px solid #f2f2f2; }
+.list-item:active { background: #fafafa; }
+
+.fund-name { display: block; font-size: 15px; color: #333; font-weight: 500; margin-bottom: 4px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.fund-code { font-size: 11px; color: #999; background: #f2f2f2; padding: 1px 4px; border-radius: 2px; }
+
+.price-txt { display: block; font-size: 16px; font-weight: bold; color: #333; }
+.nav-txt { display: block; font-size: 11px; color: #bbb; margin-top: 2px; }
+
+.rate-val { font-size: 17px; font-weight: bold; font-family: monospace; }
+.red { color: #ee0a24; }
+.green { color: #07c160; }
+
+.empty-tip { text-align: center; padding: 60px; color: #ccc; font-size: 14px; }
